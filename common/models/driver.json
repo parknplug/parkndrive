@@ -1,0 +1,72 @@
+{
+  "name": "Driver",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mysql": {
+    "schema": "dev_gestio",
+    "table": "e_driver"
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "mysql": {
+        "columnName": "d_id"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "d_name"
+      }
+    },
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "d_first_name"
+      }
+    },
+    "username": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "d_username"
+      }
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "d_email"
+      }
+    },
+    "password": {
+      "required": true,
+      "mysql": {
+        "columnName": "d_password"
+      }
+    },
+    "houseId": {
+      "type": "number",
+      "mysql": {
+        "columnName": "d_h_id"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "habitation": {
+      "type": "belongsTo",
+      "model": "House",
+      "foreignKey": "houseId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

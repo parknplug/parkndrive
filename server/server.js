@@ -3,6 +3,10 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
+var bodyParser = require('body-parser');
+var path = require('path');
+var session = require('express-session');
+
 var app = module.exports = loopback();
 
 // Views engine
@@ -18,7 +22,7 @@ app.use(loopback.static(path.resolve(__dirname, '../client/public')));
 
 // Use session
 app.use(session({
-  secret:             'c8e330fe957c3d0fae2eb876848eeeebd474bae5',
+  secret:             'c8e330fe957ca908sdfipooy848eeeebd474bae5',
   resave:             false,
   saveUninitialized:  false
 }));

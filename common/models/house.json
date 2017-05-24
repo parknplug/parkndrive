@@ -1,0 +1,60 @@
+{
+  "name": "House",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mysql": {
+    "schema": "dev_gestio",
+    "table": "e_house"
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "mysql": {
+        "columnName": "h_id"
+      }
+    },
+    "name": {
+      "type": "string",
+      "mysql": {
+        "columnName": "h_name"
+      }
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "h_address"
+      }
+    },
+    "postalCode": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "h_postal_code"
+      }
+    },
+    "city": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "h_city"
+      }
+    },
+    "country": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "h_country"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
