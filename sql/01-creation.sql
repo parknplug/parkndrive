@@ -1,6 +1,9 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+CREATE DATABASE IF NOT EXISTS `parkndrive`;
+USE `parkndrive`;
+
 -- driver table
 CREATE TABLE IF NOT EXISTS `e_driver` (
   `d_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
