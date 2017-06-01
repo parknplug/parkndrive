@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `e_house` (
   `h_postal_code` int(1) NOT NULL,
   `h_city` varchar(50) NOT NULL,
   `h_country` varchar(2) NOT NULL DEFAULT 'FR',
+  `h_value` int(5) unsigned NOT NULL,
   PRIMARY KEY (`h_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

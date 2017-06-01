@@ -51,6 +51,13 @@
       "mysql": {
         "columnName": "h_country"
       }
+    },
+    "value": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "h_value"
+      }
     }
   },
   "validations": [],
