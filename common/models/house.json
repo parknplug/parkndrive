@@ -61,7 +61,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "owners": {
+      "type": "hasMany",
+      "model": "Driver",
+      "foreignKey": "houseId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
