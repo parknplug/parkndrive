@@ -5,6 +5,8 @@ module.exports = function(app) {
 
   var AccessToken = app.models.AccessToken;
   var Driver = app.models.Driver;
+  var Car = app.models.Car;
+  var House = app.models.House;
 
 
 
@@ -55,38 +57,9 @@ module.exports = function(app) {
 
   /* Index */
   router.get('/', function(req, res) {
-    if (checkLogin(sess.token))
-      Driver.findById(sess.user.id, {
-        include: "habitation"
-      }, function(err, driver) {
-        if(err) return res.send('error');
-        res.render('index', {
-          user: driver.toJSON()
-        });
-      });
-    else
-      res.render('login');
+      res.render('index');
   });
-
-
-  /* Login */
-  router.post('/login', function(req, res) {
-    Driver.login({
-      username: req.body.username,
-      password: " "
-    }, 
-    "user",
-    function(err, token) {
-      if(err) return res.send("error");
-
-      let t = token.toJSON();
-      sess.user = t.user;
-      delete t.user;
-      sess.token = new AccessToken(t);
-
-      res.redirect('/');
-    });
-  });
+  
 
   
   

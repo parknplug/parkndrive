@@ -1,0 +1,59 @@
+<div class="content-page" >
+
+    
+                    
+    <div class="col-md-12">
+        
+        <div class="card-box" style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-lg-12" >
+                    <h4 class="m-t-0 header-title">
+                        <b>Habitations</b> 
+                        <a class="btn btn-success btn-xs pull-right" ng-href="/#!/houses/create">
+                            <i class="fa fa-plus"></i> Ajouter une habitation
+                        </a>
+                    </h4>
+                    
+                    <div class="p-20">
+                        <table class="table m-0 table-striped">
+                            
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nom</th>
+                                    <th>Adresse</th>
+                                    <th>Code postal</th>
+                                    <th>Ville</th>
+                                    <th>Pays</th>
+                                    <th>Voir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-if="$resolve.houses.length == 0">
+                                    <td colspan="6" style="text-align: center;">Aucune habitation existe</th>
+                                </tr>
+
+                                <tr ng-repeat="(key, house) in $resolve.houses">
+                                    <td>{{house.id}}</td>
+                                    <td>{{house.name}}</td>
+                                    <td>{{house.address}}</td>
+                                    <td>{{house.postalCode}}</td>
+                                    <td>{{house.city}}</td>
+                                    <td>{{house.country}}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-xs" ng-href="/#!/houses/{{house.id}}/edit"><i class="fa fa-edit"></i> Editer</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                
+         
+            </div>
+        </div>
+
+    </div>
+
