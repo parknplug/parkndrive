@@ -22,31 +22,15 @@ app.controller('carCtrl', function($rootScope,$scope,$location,carFactory){
 	$scope.delete = async (car_key, car_id) => {
   		let result = await carFactory.deleteById(car_id);
   		if (result) {
-			swal({
-			  	title: 'Voiture supprimée',
-			  	text: '',
-			  	type: 'success'
-			}).then(function () {
-		  		
-				$scope.$resolve.cars.splice(car_key,1);
-				$scope.$apply();
-
-		  	},function () {})				
+			$scope.$resolve.cars.splice(car_key,1);
+			$scope.$apply();
 		}
 	}
 	$scope.addTravel = async (car, distance) => {
   		let result = await carFactory.addTravel(car.id, distance);
   		if (result) {
-			swal({
-			  	title: 'Trajet créer',
-			  	text: '',
-			  	type: 'success'
-			}).then(function () {
-		  		
-				$location.path('/cars/'+car.id+'/show')
-				$scope.$apply();
-
-		  	},function () {})				
+			$location.path('/cars/'+car.id+'/show')
+			$scope.$apply();
 		}
 	}  
 });
