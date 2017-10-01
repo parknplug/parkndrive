@@ -1,2 +1,166 @@
-Congratulations, you are logged in as <%= user.firstName %> <%= user.name%>!<br>
-You live at <%= user.habitation.address%>, <%= user.habitation.city%>.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<title>Park'n Drive</title>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+ <!-- jQuery  -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap-notify.min.js"></script>
+<script src="assets/js/detect.js"></script>
+<script src="assets/js/fastclick.js"></script>
+
+
+<script src="assets/js/jquery.slimscroll.js"></script>
+<script src="assets/js/jquery.blockUI.js"></script>
+<script src="assets/js/waves.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/jquery.nicescroll.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- jQuery  -->
+<script src="assets/plugins/highlight/highlight.pack.js"></script>
+<script src="assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
+<script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
+<script src="assets/plugins/morris/morris.min.js"></script>
+<script src="assets/plugins/raphael/raphael-min.js"></script>
+<script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
+<script src="assets/js/jquery.core.js"></script>
+
+
+
+<script type="text/javascript" src="assets/js/function.js"></script>
+<!--<script type="text/javascript" src="assets/js/angular/angular.js"></script>-->
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script type="text/javascript" src="assets/js/angular/angular-route.js"></script>
+<script type="text/javascript" src="assets/js/angular/angular-sanitize.js"></script>
+<script type="text/javascript" src="assets/js/angular/angular-animate.js"></script>
+<script type="text/javascript" src="assets/js/angular/angular-filereader.js"></script>
+<script type="text/javascript" src="assets/js/angular/angular-cropper.js"></script>
+<script type="text/javascript" src="assets/js/angular/ui-bootstrap-tpls-2.5.0.js"></script>
+<script type="text/javascript" src="assets/js/angular/angular-truncate.js"></script>
+<script type="text/javascript" src="assets/js/select.min.js"></script>
+
+<script type="text/javascript" src="angular/app.js"></script>
+<script type="text/javascript" src="angular/controllers/generalCtrl.js"></script>
+<script type="text/javascript" src="angular/controllers/loginCtrl.js"></script>
+<script type="text/javascript" src="angular/controllers/driverCtrl.js"></script>
+<script type="text/javascript" src="angular/controllers/houseCtrl.js"></script>
+<script type="text/javascript" src="angular/controllers/carCtrl.js"></script>
+
+<script type="text/javascript" src="angular/services/driverFactory.js"></script>
+<script type="text/javascript" src="angular/services/houseFactory.js"></script>
+<script type="text/javascript" src="angular/services/carFactory.js"></script>
+
+
+
+
+
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/select.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="assets/plugins/highlight/styles/default.css">
+
+<!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+
+
+</head>
+<body class="fixed-left" ng-app="parkndrive" ng-controller="generalCtrl">
+
+<!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <div class="topbar" ng-if="userLogged">
+
+                <div class="topbar-left">
+                    <div class="text-center">
+                        <a href="index.html" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Park'n Drive</span></a>
+                    </div>
+                </div>
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+                        <div class="">
+
+                            <ul class="nav navbar-nav navbar-right pull-right">
+                       
+
+                                <li class="dropdown top-menu-item-xs">
+                                    <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">{{user.firstName}} {{user.name}}</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/#!/drivers/{{user.id}}/edit"><i class="ti-user m-r-10 text-custom"></i>Profil</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="" ng-click="disconnect()"><i class="ti-power-off m-r-10 text-danger"></i> Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+
+            <div class="left side-menu" ng-if="userLogged">
+                <div class="sidebar-inner slimscrollleft">
+                    <!--- Divider -->
+                    <div id="sidebar-menu">
+                        <ul>
+
+                          <li class="text-muted menu-title">Navigation</li>
+
+                            <li class="has_sub">
+                                <a href="/#!/drivers" class="waves-effect"><i class="fa fa-users"></i> <span> Utilisateurs </span></a>
+                                <a href="/#!/houses" class="waves-effect" ng-if="user.isAdmin"><i class="fa fa-home"></i> <span> Habitations </span></a>
+                                <a href="/#!/cars" class="waves-effect"><i class="fa fa-car"></i><span> Voitures </span></a>
+                                
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+            <div ng-if="dataLoading"><h1><i class="fa fa-spin fa-spinner fa-2x"></i></h1></div>
+            <ng-view></ng-view>
+
+
+        </div>
+
+
+
+
+
+</body>
+
+</html>

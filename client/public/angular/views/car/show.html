@@ -1,0 +1,52 @@
+<div class="content-page" >
+
+    
+                    
+    <div class="col-md-12">
+        
+        <div class="card-box" style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-lg-12" >
+                    <h4 class="m-t-0 header-title">
+                        <b>Voiture</b> 
+                        
+                    </h4>
+                    
+                    <div class="p-20">
+                       
+                       <p>Nom de la voiture : {{$resolve.car.name}}</p>
+                       <p>Nom du propriétaire : {{$resolve.driver.firstName}} {{$resolve.driver.name}}</p>
+                    </div> 
+                    <div class="p-20">
+                        <h3>Trajets <a ng-href="/#!/cars/{{$resolve.car.id}}/addTravel" class="btn btn-xs btn-success pull-right"><i class="fa fa-plus"></i> Ajouter un trajet</a></h3>
+                        <table class="table m-0 table-striped">
+                            
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Distance</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-if="$resolve.travels.length == 0">
+                                    <td colspan="6" style="text-align: center;">Aucun trajet n'existe</th>
+                                </tr>
+
+                                <tr ng-repeat="(key, travel) in $resolve.travels">
+                                    <td>{{travel.id}}</td>
+                                    <td>{{travel.distance}} km</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                
+         
+            </div>
+        </div>
+
+    </div>
+

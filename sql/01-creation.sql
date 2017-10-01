@@ -45,3 +45,26 @@ ALTER TABLE  `e_driver`
   ADD `status` int(11) NULL DEFAULT NULL,
   ADD `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   ADD `lastUpdated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+DROP TABLE IF EXISTS `e_car`;
+CREATE TABLE `e_car` (
+  `c_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `c_name` varchar(45) NOT NULL,
+  `c_d_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`c_id`),
+  KEY `c_d_id_idx` (`c_d_id`),
+  CONSTRAINT `c_d_id` FOREIGN KEY (`c_d_id`) REFERENCES `e_driver` (`d_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `e_travel`;
+CREATE TABLE `e_travel` (
+  `t_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `t_distance` int(10) unsigned NOT NULL,
+  `t_c_id` int(10) unsigned DEFAULT NULL,
+  `t_d_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`t_id`),
+  KEY `t_c_id_idx` (`t_c_id`),
+  KEY `t_d_id_idx` (`t_d_id`),
+  CONSTRAINT `t_c_id` FOREIGN KEY (`t_c_id`) REFERENCES `e_car` (`c_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `t_d_id` FOREIGN KEY (`t_d_id`) REFERENCES `e_driver` (`d_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;

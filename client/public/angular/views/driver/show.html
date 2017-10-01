@@ -1,0 +1,51 @@
+<style type="text/css">
+    .banner{
+            margin-top: 60px;
+            height: 400px;
+            
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-position: center;
+            background-size: 100% 100%;
+            background-origin: content-box;
+            z-index: 1;
+    }
+</style>
+                        
+
+<div class="content-page" >
+
+    
+                    
+    <div class="col-md-12">
+        
+        <div class="card-box" style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-lg-12" >
+                    <h4 class="m-t-0 header-title"><b>Conducteur : {{$resolve.driver.name}} {{$resolve.driver.firstName}}</b></h4>
+                    
+                    <div class="p-20">
+
+                        <p>ID : {{$resolve.driver.id}}</p>
+                        <p>Nom d'utilisateur : {{$resolve.driver.username}}</p>
+                        <p>Nom : {{$resolve.driver.name}}</p>
+                        <p>Prénom : {{$resolve.driver.firstName}}</p>
+                        <p>Email : {{$resolve.driver.email}}</p>
+                        <br>
+                        <p>Adresse : {{$resolve.house.address}}</p>
+                        <p>Code Postal : {{$resolve.house.postalCode}}</p>
+                        <p>Ville : {{$resolve.house.city}}</p>
+                        <p>Pays : {{$resolve.house.country}}</p>
+                        <p ng-if="user.isAdmin || user.id == $resolve.driver.id">Valeur : ${{$resolve.house.value}}</p>
+
+                        
+                    </div>
+
+                </div>
+                
+         
+            </div>
+        </div>
+
+    </div>
+

@@ -4,12 +4,12 @@
     "connector": "memory"
   },
   "sql": {
-    "host": "localhost",
+    "host": "mysql",
     "port": 3306,
-    "database": "parkndrive",
-    "password": "root",
+    "database": "parkandplug",
+    "password": "parkandplug",
     "name": "sql",
-    "user": "root",
+    "user": "parkandplug",
     "connector": "mysql"
   }
 }

@@ -1,0 +1,81 @@
+{
+  "name": "Car",
+  "plural": "cars",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+
+  "mysql": {
+    "schema": "dev_gestio",
+    "table": "e_car"
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true,
+      "mysql": {
+        "columnName": "c_id"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "c_name"
+      }
+    },
+    "driverId": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "c_d_id"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owner": {
+      "type": "belongsTo",
+      "model": "Driver",
+      "foreignKey": "driverId"
+    },
+    "travels": {
+      "type": "hasMany",
+      "model": "Travel",
+      "foreignKey": "carId"
+    }
+  },
+  "acls": [
+    
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "carOwner",
+      "permission": "ALLOW",
+      "property": "*"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
+  "methods": {}
+}

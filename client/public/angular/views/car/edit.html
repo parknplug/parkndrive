@@ -1,0 +1,54 @@
+<style type="text/css">
+    .banner{
+            margin-top: 60px;
+            height: 400px;
+            
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-position: center;
+            background-size: 100% 100%;
+            background-origin: content-box;
+            z-index: 1;
+    }
+</style>
+                        
+
+<div class="content-page" >
+
+    
+                    
+    <div class="col-md-12">
+        
+        <div class="card-box" style="margin-top: 100px;">
+            <div class="row">
+                <div class="col-lg-12" >
+                    <h4 class="m-t-0 header-title"><b>Création d'une voiture</b></h4>
+                    
+                    <div class="p-20">
+                        
+                        <form>
+
+                            <div class="form-group">
+                                <label for="name">Nom :</label>
+                                <input type="text" class="form-control" name="name" ng-model="$resolve.car.name">
+                            </div>
+                            <div class="form-group" ng-if="user.isAdmin">
+                                <label for="driverId">Propriétaire :</label>
+                                <select class="form-control" name="driverId" ng-model="$resolve.car.driverId" ng-options="driver.id as driver.firstName+' '+driver.name for driver in $resolve.drivers" >
+                                </select>
+                            </div>
+
+                            <button class="btn btn-block  btn-success" ng-click="save()"><i class="fa fa-save"></i> Enregistrer</button>
+                        </form>
+
+                        
+                    </div>
+
+                </div>
+                
+         
+            </div>
+        </div>
+
+    </div>
+
